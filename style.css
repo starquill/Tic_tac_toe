@@ -1,0 +1,29 @@
+body{
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: antiquewhite;
+}
+button{
+    font: bold;
+    padding: 15px;
+    border-radius: 2vmin;
+    margin-left: 3vw;
+    color: black;
+    border-color: white;
+    background-color: skyblue;
+    height: fit-content;
+    width: fit-content;
+}
+
+.popup2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    display: none;
+}
+.popup1{
+    display: none;
+}
