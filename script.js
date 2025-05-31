@@ -1,3 +1,16 @@
+
+const ctrl=document.querySelector(".ctrlContainer");
+const grid=document.querySelector(".grid");
+const playBtn=document.querySelector(".Play");
+const score1=document.querySelector(".score1");
+const score2=document.querySelector(".score2");
+const one=player("A");
+const two=player("B");
+const popup2=document.querySelector(".popup2");
+let playerTurn=0;
+let startPlayer=0;
+
+
 function player(Name){
     let score=0;
     return{
@@ -60,6 +73,7 @@ function check(row,col){
     }
     if(sum==9)
         tracker("draw");
+    switchh();
 
 }
 
@@ -69,31 +83,53 @@ function reset(){
             arr[i][j]=0;
         }
     }
+    grid.innerHTML="";
 }
 
 function tracker(result){
-    if(result=="draw"){
-        reset();
-        switchh();
-    }
-    else if(result=="one"){
+    if(result==="one"){
         one.increment();
-        reset();
-        switchh();
+        score1.textContent=one.score();
     }
-    else if(result=="two"){
+    else if(result==="two"){
         two.increment();
-        reset();
-        switchh();
+        score2.textContent=two.score();
     }
-    else{
-        switchh();
-    }
+    reset();
+    startPlayer=Math.abs(startPlayer-1);
+    playerTurn=startPlayer;
+    makeGrid();
 }
 
 function switchh(){
     playerTurn=Math.abs(playerTurn-1);
 }
 
+playBtn.addEventListener('click',()=>{
+    playBtn.style.display="none";
+    grid.style.display="flex";
+    popup2.style.display="flex";
+    makeGrid();
+}
+);
+
+function makeGrid(){
+    for(let i=0;i<3;i++){
+        const row=document.createElement("div");
+        row.classList.add("row");
+        for(let j=0;j<3;j++){
+            const ele=document.createElement("div");
+            ele.classList.add("cell");
+            ele.addEventListener('click',()=>{
+                arr[i][j]=playerTurn===0?1:-1;
+                ele.innerHTML=playerTurn===0?"X":"O";
+                ele.style.pointerEvents="none";
+                check(i,j);
+            });
+            row.appendChild(ele);
+        }
+        grid.appendChild(row);
+    }
+}
 
 

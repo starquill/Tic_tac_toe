@@ -19,11 +19,45 @@ button{
 }
 
 .popup2{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     display: none;
+    gap: 20px;
+    margin-top: 10px;
+    font-size: 1.2em;
+    justify-content: center;
 }
 .popup1{
     display: none;
+    flex-direction: column;
+    justify-content:center;
+    position: fixed;
+    height: 30vh;
+    width: 14vw;
+    background-color: skyblue;
+    transform: translate(-22%,-35%);
+}
+
+.grid{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    flex-direction: column;
+    height: 80vmin;
+    width: 80vmin;
+}
+.cell{
+    flex: 1;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 20vmin;
+    text-align: center;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+.heading{
+    text-align: center;
 }
